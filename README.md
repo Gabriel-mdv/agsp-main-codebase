@@ -506,5 +506,3 @@ Jean Gabriel Mpuhwezimana — jmpuhwez@andrew.cmu.edu
 Mohamed Awud — mawud@andrew.cmu.edu  
 
 Carnegie Mellon University Africa, Kigali, Rwanda
-#   a g s p - m a i n - c o d e b a s e  
- 
