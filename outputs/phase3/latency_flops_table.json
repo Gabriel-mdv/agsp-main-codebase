@@ -1,0 +1,26 @@
+{
+  "hardware_measurements": [
+    {
+      "label": "baseline",
+      "vram_gb": 3.1311426162719727,
+      "mean_latency_ms": 544.6828025917057,
+      "std_latency_ms": 303.12650358270696
+    },
+    {
+      "label": "agsp",
+      "vram_gb": 3.1370019912719727,
+      "mean_latency_ms": 552.0027531019878,
+      "std_latency_ms": 34.557368659571345
+    },
+    {
+      "label": "mbp",
+      "vram_gb": 3.1370019912719727,
+      "mean_latency_ms": 547.126505302731,
+      "std_latency_ms": 1.734928930242284
+    }
+  ],
+  "flops_reduction_by_ratio": {
+    "agsp_0.4": 39.84375
+  },
+  "reference_baseline_tokspersec": 51.63
+}

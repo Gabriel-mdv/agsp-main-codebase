@@ -1,0 +1,53 @@
+{
+  "baseline": {
+    "label": "baseline",
+    "hardware": {
+      "mean_latency_ms": 544.6828025917057,
+      "std_latency_ms": 303.12650358270696,
+      "min_latency_ms": 442.5937899504788,
+      "peak_vram_gb": 3.1311426162719727
+    },
+    "pope": {
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "yes_ratio": 0.0,
+      "n_evaluated": 500
+    }
+  },
+  "agsp": {
+    "label": "agsp_40",
+    "hardware": {
+      "mean_latency_ms": 552.0027531019878,
+      "std_latency_ms": 34.557368659571345,
+      "min_latency_ms": 537.8136979998089,
+      "peak_vram_gb": 3.1370019912719727
+    },
+    "pope": {
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "yes_ratio": 0.0,
+      "n_evaluated": 500
+    }
+  },
+  "mbp": {
+    "label": "mbp_40",
+    "hardware": {
+      "mean_latency_ms": 547.126505302731,
+      "std_latency_ms": 1.734928930242284,
+      "min_latency_ms": 545.635100977961,
+      "peak_vram_gb": 3.1370019912719727
+    },
+    "pope": {
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "yes_ratio": 0.0,
+      "n_evaluated": 500
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "0.4": {
+    "agsp": {
+      "strategy": "agsp",
+      "pruning_ratio": 0.4,
+      "pruning_mode": "structural",
+      "seed": 42,
+      "scope_boundary": false,
+      "heads_pruned": 153,
+      "total_heads": 384,
+      "sparsity_pct": 39.84375,
+      "layers_affected": 24,
+      "orig_attn_flops": 12884901888,
+      "pruned_attn_flops": 7751073792,
+      "flops_reduction_abs": 5133828096,
+      "flops_reduction_pct": 39.84375,
+      "epoch_losses": [
+        34.218833333333336,
+        29.044083333333333,
+        27.84825
+      ],
+      "epoch1_loss": 34.218833333333336,
+      "final_loss": 27.84825
+    },
+    "mbp": {
+      "strategy": "mbp",
+      "pruning_ratio": 0.4,
+      "pruning_mode": "structural",
+      "seed": 42,
+      "scope_boundary": false,
+      "heads_pruned": 153,
+      "total_heads": 384,
+      "sparsity_pct": 39.84375,
+      "layers_affected": 22,
+      "epoch_losses": [
+        49.66425,
+        36.067166666666665,
+        34.86525
+      ],
+      "epoch1_loss": 49.66425,
+      "final_loss": 34.86525
+    }
+  }
+}

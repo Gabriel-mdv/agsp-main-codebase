@@ -1,0 +1,17 @@
+{
+  "label": "mbp_40",
+  "hardware": {
+    "mean_latency_ms": 547.126505302731,
+    "std_latency_ms": 1.734928930242284,
+    "min_latency_ms": 545.635100977961,
+    "peak_vram_gb": 3.1370019912719727
+  },
+  "pope": {
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "yes_ratio": 0.0,
+    "n_evaluated": 500
+  }
+}

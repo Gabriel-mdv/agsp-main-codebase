@@ -1,0 +1,38 @@
+# AGSP-VLM Requirements
+# Install with: pip install -r requirements.txt
+#
+# For full setup (recommended), use conda instead:
+#   conda env create -f environment.yml
+#   conda activate agsp
+#
+# PyTorch is NOT listed here — install separately first:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# Core transformers stack
+transformers>=4.40.0
+accelerate>=0.29.0
+peft>=0.10.0
+
+# Quantisation (optional fallback for low-VRAM nodes)
+bitsandbytes>=0.43.0
+
+# Dataset loading
+datasets>=2.18.0
+pycocotools>=2.0.7
+huggingface_hub>=0.22.0
+
+# Scientific computing
+numpy>=1.26.0
+scipy>=1.12.0
+
+# Visualisation
+matplotlib>=3.8.0
+seaborn>=0.13.0
+Pillow>=10.0.0
+
+# Utilities
+tqdm>=4.66.0
+einops>=0.7.0
+
+# Testing
+pytest>=7.4.0

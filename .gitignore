@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Downloaded model weights / HF cache (large, regenerable)
+model_cache/
+
+# Job logs
+logs/
+
+# Vendored external repo (has its own .git history)
+MobileVLM_code/

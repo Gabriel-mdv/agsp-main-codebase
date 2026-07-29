@@ -1,0 +1,89 @@
+name: agsp
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  # ── Python ────────────────────────────────────────────────────────────────
+  - python=3.10
+
+  # ── PyTorch ───────────────────────────────────────────────────────────────
+  # Use pytorch-cuda=12.1 if your Bridges-2 node has CUDA 12.x available.
+  # Use pytorch-cuda=11.8 if only CUDA 11.x is available.
+  # Check with: module avail cuda
+  #
+  # The paper used V100-32GB with CUDA 11.8 and PyTorch 2.1.
+  # bfloat16 is supported on V100 with PyTorch >= 2.0.
+  - pytorch>=2.1.0
+  - torchvision>=0.16.0
+  - pytorch-cuda=12.1      # change to 11.8 if CUDA 12.x unavailable
+
+  # ── Core scientific ───────────────────────────────────────────────────────
+  - numpy>=1.26.0
+  - scipy>=1.12.0           # required for Spearman rho in bootstrap stability
+  - matplotlib>=3.8.0       # AIS distribution plots, Pareto curves
+  - seaborn>=0.13.0         # optional, used in some visualisations
+  - pillow>=10.0.0           # image loading for COCO and POPE
+
+  # ── Utilities ─────────────────────────────────────────────────────────────
+  - tqdm>=4.66.0
+  - pip
+
+  # ── pip-only packages ─────────────────────────────────────────────────────
+  - pip:
+    # Core transformers stack
+    - transformers>=4.40.0        # MobileVLM V2 requires >= 4.38; 4.40 recommended
+    - accelerate>=0.29.0          # device_map="auto" support
+    - peft>=0.10.0                # LoRA fine-tuning (rank=16, alpha=32)
+
+    # bitsandbytes — kept for optional 8-bit/4-bit fallback on low-VRAM nodes
+    # NOT used in paper experiments (bfloat16 is used throughout)
+    # Only activated if AGSP_QUANT=8bit or AGSP_QUANT=4bit in run_pipeline.sh
+    - bitsandbytes>=0.43.0
+
+    # Dataset loading
+    - datasets>=2.18.0            # HuggingFace datasets (VQAv2 fallback loader)
+    - pycocotools>=2.0.7          # COCO annotation parsing for calibration + POPE
+
+    # Misc
+    - einops>=0.7.0               # tensor operations used in MobileVLM V2 internals
+    - pytest>=7.4.0               # smoke tests (tests/test_smoke.py)
+
+# ── Setup notes for PSC Bridges-2 ─────────────────────────────────────────────
+#
+# 1. Check available CUDA version:
+#      module avail cuda
+#    Update pytorch-cuda above to match.
+#
+# 2. Create the environment:
+#      module load anaconda3
+#      conda env create -f environment.yml
+#      conda activate agsp
+#
+# 3. Verify bfloat16 support (required for paper-matching results):
+#      python -c "import torch; print(torch.cuda.is_bf16_supported())"
+#    Should print: True
+#    If False, your GPU does not support bfloat16 — results will not match paper.
+#
+# 4. Install MobileVLM V2 code (required for MobileLlamaForCausalLM):
+#      cd MobileVLM_code
+#      pip install -e .
+#
+# 5. Verify the full environment:
+#      python -m pytest tests/test_smoke.py -v
+#
+# 6. To update an existing environment:
+#      conda env update -f environment.yml --prune
+#
+# ── GPU compatibility ──────────────────────────────────────────────────────────
+#
+#   GPU         | VRAM  | bfloat16 | AGSP_QUANT    | Paper-matching?
+#   ────────────|──────|──────────|───────────────|────────────────
+#   V100-32GB   | 32GB | Yes      | bfloat16      | Yes (used in paper)
+#   A100-40GB   | 40GB | Yes      | bfloat16      | Yes
+#   H100-80GB   | 80GB | Yes      | bfloat16      | Yes
+#   RTX 3090    | 24GB | Yes      | bfloat16      | Yes
+#   V100-16GB   | 16GB | Yes      | 8bit          | No (degraded)
+#   T4          | 16GB | No       | 8bit          | No (degraded)
